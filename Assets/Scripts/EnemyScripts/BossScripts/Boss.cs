@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Boss : MonoBehaviour, IHasCoolDown
 {
@@ -25,6 +26,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
     [SerializeField] private CooldownSystem cooldownSystem;
     private GameObject player;
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] TextMeshProUGUI congrats;
 
     public int Id { get; private set; }
     public float CooldownDuration { get; private set; }
@@ -82,6 +84,10 @@ public class Boss : MonoBehaviour, IHasCoolDown
 
     private void Crash()
     {
+        if(transform.GetChild(2).gameObject.activeSelf)
+        {
+            transform.GetChild(2).gameObject.SetActive(false);
+        }
         if(transform.position != crashDirection)
         {
             float step = speed * Time.deltaTime;
@@ -89,6 +95,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
         else
         {
+            congrats.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }
     }

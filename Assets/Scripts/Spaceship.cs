@@ -15,20 +15,18 @@ public class Spaceship : MonoBehaviour
 
     protected virtual void CheckIfDead()
     {
-        if (dead)
+        Vector3 location = transform.position;
+        explosion = Instantiate(explosion, location, explosion.transform.rotation);
+        explosion.Play();
+        if (destroy)
         {
-            Vector3 location = transform.position;
-            explosion = Instantiate(explosion, location, explosion.transform.rotation);
-            explosion.Play();
-            if (destroy)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
+            Destroy(gameObject);
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 
     protected void Tilt()

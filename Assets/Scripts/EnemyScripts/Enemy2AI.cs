@@ -18,6 +18,9 @@ public class Enemy2AI : Enemy
         AdjustHeight();
         Tilt();
         MoveHorizontal();
-        CheckIfDead();
+        if (dead)
+        {
+            CheckIfDead();
+        }
     }
 }

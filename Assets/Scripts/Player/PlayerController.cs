@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : Spaceship
 {
@@ -13,6 +14,7 @@ public class PlayerController : Spaceship
     bool canShoot;
     Rigidbody playerRb;
     SpawnManager spawnManager;
+    [SerializeField] TextMeshProUGUI gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,12 @@ public class PlayerController : Spaceship
         Tilt();
         MovementConstrainV();
         MovementConstrainH();
-        CheckIfDead();
+        
+        if (dead)
+        {
+            DeathState();
+            CheckIfDead();
+        }
         
     }
     void InputProcessing()
@@ -88,6 +95,11 @@ public class PlayerController : Spaceship
         {
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
         }
+    }
+
+    void DeathState()
+    {
+        gameOver.gameObject.SetActive(true);
     }
     IEnumerator ShootProjectile()
     {
