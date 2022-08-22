@@ -22,7 +22,7 @@ public class BGM : MonoBehaviour
         audiosource = GetComponent<AudioSource>();
     }
 
-    public void TogglePlaying()
+    public void TogglePlaying() //ABSTRACTION
     {
         playing = !playing;
         if (playing)

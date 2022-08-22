@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IHasCoolDown
 {
+    //ENCAPSULATION
     int Id { get; }
     float CooldownDuration { get; }
 }

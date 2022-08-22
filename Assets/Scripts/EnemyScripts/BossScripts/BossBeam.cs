@@ -22,7 +22,7 @@ public class BossBeam : Lifespan
         }
     }
 
-    private void YeetLeft()
+    private void YeetLeft() //ABSTRACTION
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
         

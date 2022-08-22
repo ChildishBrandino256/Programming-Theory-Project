@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPooling : MonoBehaviour
+public class BulletPooling : MonoBehaviour //This is basically a 1:1 of the object pooling script from the optimization lesson
 {
     public static BulletPooling BulletPool;
     public List<GameObject> pooledObjects;

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CooldownSystem : MonoBehaviour
 {
+    //This entire script is inheritance, more or less.
     private readonly List<CooldownData> cooldowns = new List<CooldownData>();
 
     public void PutOnCooldown(IHasCoolDown cooldown)

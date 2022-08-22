@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossLazer : MoveH
+public class BossLazer : MoveH //INHERITANCE
 {
     Vector3 startPos = new Vector3(1.5f, 0, 0);
     Vector3 direction;
@@ -13,14 +13,7 @@ public class BossLazer : MoveH
     // Start is called before the first frame update
     void OnEnable()
     {
-        player = GameObject.Find("Player");
-        if (player)
-        {
-            transform.position = startPos;
-            playerInitialPos = player.transform.position;
-            transform.LookAt(playerInitialPos);
-            direction = startPos - playerInitialPos;
-        }
+        FindTargetAndFire();
     }
 
     // Update is called once per frame
@@ -31,11 +24,23 @@ public class BossLazer : MoveH
         VBounds();
     }
 
-    void VBounds()
+    void VBounds() //ABSTRACTION
     {
         if(-yRange > transform.position.y || transform.position.y > yRange)
         {
             gameObject.SetActive(false);
+        }
+    }
+
+    void FindTargetAndFire() //ABSTRACTION
+    {
+        player = GameObject.Find("Player");
+        if (player)
+        {
+            transform.position = startPos;
+            playerInitialPos = player.transform.position;
+            transform.LookAt(playerInitialPos);
+            direction = startPos - playerInitialPos;
         }
     }
 }

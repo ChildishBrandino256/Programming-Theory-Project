@@ -25,7 +25,7 @@ public class BGMToggle : MonoBehaviour
         }
     }
 
-    public void Toggle()
+    public void Toggle() //ABSTRACTION
     {
         state = !state;
     }

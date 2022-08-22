@@ -9,11 +9,11 @@ public class PressRtoRestart : MenuManager
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            LoadGame();
+            LoadGame(); //ABSTRACTION, INHERITANCE
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            LoadMenu();
+            LoadMenu(); //ABSTRACTION, INHERITANCE
         }
     }
 }

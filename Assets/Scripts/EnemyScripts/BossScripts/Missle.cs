@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missle : Enemy
+public class Missle : Enemy  //INHERITANCE
 {
     private bool track = false;
     private Collider hitbox;
@@ -24,7 +24,7 @@ public class Missle : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //ABSTRACTION
     {
         if (!dead)
         {

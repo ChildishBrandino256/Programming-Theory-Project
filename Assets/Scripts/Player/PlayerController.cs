@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerController : Spaceship
+public class PlayerController : Spaceship //INHERITANCE
 {
     float speed;
     float baseSpeed = 8.0f;
@@ -28,7 +28,7 @@ public class PlayerController : Spaceship
         score = 0;
     }
     // Update is called once per frame
-    void Update()
+    void Update() //ABSTRACTION
     {
         InputProcessing();
         MovePlayer();

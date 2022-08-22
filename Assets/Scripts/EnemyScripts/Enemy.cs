@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Spaceship
-{
+public class Enemy : Spaceship //This entire script is one giant ABSTRACTION and INHERITANCE for the main enemy types that show up in the game. parent class go BRRRRRR
+{//Also this script is not only a parent class, but is itself a child of a more abstract class that both enemies AND the player belong to.
     protected bool shoots;
     protected bool followPlayer;
 

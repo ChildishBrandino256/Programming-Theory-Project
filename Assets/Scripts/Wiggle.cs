@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wiggle : MonoBehaviour
+public class Wiggle : MonoBehaviour //ABSTRACTION
 {
     private Quaternion targetRotation;
 

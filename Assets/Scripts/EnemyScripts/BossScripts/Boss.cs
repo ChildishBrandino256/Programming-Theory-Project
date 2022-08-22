@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class Boss : MonoBehaviour, IHasCoolDown
+public class Boss : MonoBehaviour, IHasCoolDown //INHERITANCE
 {
     private Vector3 startPos;
     private Vector3 finalPos;
@@ -31,8 +31,8 @@ public class Boss : MonoBehaviour, IHasCoolDown
     [SerializeField] TextMeshProUGUI congrats;
     [SerializeField] Image healthBar;
 
-    public int Id { get; private set; }
-    public float CooldownDuration { get; private set; }
+    public int Id { get; private set; } //ENCAPSULATION
+    public float CooldownDuration { get; private set; } //ENCAPSULATION
 
 
     // Start is called before the first frame update
@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
     }
 
     // Update is called once per frame
-    private void Update()
+    private void Update() //The fact that my update method for this absolute mess of a script is relatively clean and simple is probably a pretty good example of abstraction
     {
         
         if (!ready)
@@ -73,7 +73,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
     }
 
-    private void Movement()
+    private void Movement() //ABSTRACTION
     {
         if (transform.position != finalPos)
         {
@@ -87,7 +87,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
     }
 
-    private void Crash()
+    private void Crash() //ABSTRACTION, thought i could probably do more
     {
         if(transform.GetChild(2).gameObject.activeSelf)
         {
@@ -116,13 +116,13 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
     }
 
-    private void SpawnRandomExplosions()
+    private void SpawnRandomExplosions() //ABSTRACTION
     {
         Vector3 randomSpawn = transform.position + new Vector3(Random.Range(-5f, 0f), Random.Range(-2f, 2f), -1);
         Instantiate(explosion,randomSpawn,explosion.transform.rotation);
     }
 
-    public void TakeDamage()
+    public void TakeDamage() //ABSTRACTION
     {
         DamageFlash damageFlash = FindObjectOfType<DamageFlash>();
         if (hp > 0)
@@ -138,7 +138,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
     }
 
-    private void RandomAttack()
+    private void RandomAttack() //ABSTRACTION
     {
         if (ready && player)
         {
@@ -160,7 +160,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         //yield return new WaitForSeconds(1);
     }
 
-    void Attack()
+    void Attack() //ABSTRACTION
     {
         switch (attack)
         {
@@ -188,26 +188,23 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
     }
 
-    private void GetWeapons()
+    private void GetWeapons() //INHERITANCE
     {
         laser = weaponParent.GetChild(0).GetChild(0);
         missle = weaponParent.GetChild(1);
         beam = weaponParent.GetChild(2).GetChild(0);
     }
-    public void Attack1()
+    public void Attack1() //ABSTRACTION
     {
         Id = 1;
         CooldownDuration = 4f;
-        //public int Id => attack1Id;
-        //public float cooldownDuration => 6f;
-        //if (cooldownSystem.IsOnCooldown(attack1Id))
         if (!cooldownSystem.IsOnCooldown(Id))
         {
             laser.gameObject.SetActive(true);
             cooldownSystem.PutOnCooldown(this);
         }
     }
-    void Attack2()
+    void Attack2() //ABSTRACTION
     {
         Id = 2;
         CooldownDuration = 3f;
@@ -221,7 +218,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
             }
         }
     }
-    void Attack3()
+    void Attack3() //ABSTRACTION
     {
         Id = 3;
         CooldownDuration = 5.5f;

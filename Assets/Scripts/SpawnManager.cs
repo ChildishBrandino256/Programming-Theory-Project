@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnRandomEnemy()
+    void SpawnRandomEnemy() //ABSTRACTION
     {
         if (enemiesUntilBoss > 0)
         {
@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
     {
         powerup.SetActive(true);
     }
-    public Vector3 GenerateSpawnPos(bool isEnemy,float spawnRangeMin, float spawnRangeMax)
+    public Vector3 GenerateSpawnPos(bool isEnemy,float spawnRangeMin, float spawnRangeMax) //ABSTRACTION
     {
         if (isEnemy == true)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeakPoint : MonoBehaviour
 {
-    private Boss boss;
+    private Boss boss; //not quite inheritance, and i'm not sure if that would've been a more optimized way to do it
 
     private void Start()
     {

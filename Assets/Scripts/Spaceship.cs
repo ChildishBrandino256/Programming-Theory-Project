@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spaceship : MonoBehaviour
+public class Spaceship : MonoBehaviour //This script is a parent to both the player and enemies due to some shared functionality between the two classes. INHERITANCE
 {
     protected bool dead;
     [SerializeField] protected float tilt = 20.0f;
