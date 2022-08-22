@@ -10,11 +10,14 @@ public class PlayerController : Spaceship
     float dashSpeed = 14.0f;
     float fireRate = 0.35f;
     float shotOffset = 0.5f;
+    public int score;
     bool hasPowerup;
     bool canShoot;
     Rigidbody playerRb;
     SpawnManager spawnManager;
     [SerializeField] TextMeshProUGUI gameOver;
+    [SerializeField] TextMeshProUGUI scoreText;
+    public bool m_death;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class PlayerController : Spaceship
         tilt = 30;
         playerRb = GetComponent<Rigidbody>();
         spawnManager = FindObjectOfType<SpawnManager>();
+        score = 0;
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +35,8 @@ public class PlayerController : Spaceship
         Tilt();
         MovementConstrainV();
         MovementConstrainH();
-        
+        m_death = dead;
+        scoreText.text = "Score: " + score;
         if (dead)
         {
             DeathState();
@@ -124,16 +129,10 @@ public class PlayerController : Spaceship
             hasPowerup = true;
             StartCoroutine(PowerupCountdown());
         }
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Bullet"))
         {
             StopCoroutine(ShootProjectile());
             Instantiate(explosion, transform);
-            spawnManager.gameOver = true;
-            dead = true;
-        }
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            StopCoroutine(ShootProjectile());
             spawnManager.gameOver = true;
             dead = true;
         }

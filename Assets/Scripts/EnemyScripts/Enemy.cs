@@ -9,6 +9,7 @@ public class Enemy : Spaceship
 
     protected GameObject player;
     [SerializeField] protected GameObject bullet;
+    PlayerController playerscript;
 
     protected Vector3 playerPos;
 
@@ -31,6 +32,7 @@ public class Enemy : Spaceship
     protected void FindPlayer()
     {
         player = GameObject.Find("Player");
+        playerscript = player.GetComponent<PlayerController>();
     }
     protected void Shoot()
     {
@@ -74,6 +76,7 @@ public class Enemy : Spaceship
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player Projectile"))
         {
             dead = true;
+            playerscript.score++;
         }
     }
 }

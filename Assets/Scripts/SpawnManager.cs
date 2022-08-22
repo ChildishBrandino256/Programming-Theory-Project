@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        enemiesUntilBoss = 5;
+        enemiesUntilBoss = 110;
         timeForBoss = false;
         InvokeRepeating("SpawnRandomEnemy", enemyStartDelay, enemySpawnTime);
         InvokeRepeating("SpawnPowerup", powerupStartDelay, powerupSpawnTime);

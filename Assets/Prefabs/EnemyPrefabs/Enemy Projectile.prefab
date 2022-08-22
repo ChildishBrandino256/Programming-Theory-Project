@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2472176476072393907}
   m_Layer: 0
   m_Name: Enemy Projectile
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.07, y: 2.29, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3970987865795703414}
   m_Father: {fileID: 0}
@@ -55,6 +56,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -110,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2454562, y: 0.29748726, z: 1}
-  m_Center: {x: 0.004232168, y: 0.021160126, z: 0}
+  m_Size: {x: 1.2454562, y: 0.16288471, z: 1}
+  m_Center: {x: 0.004232168, y: 0.009283066, z: 0}
 --- !u!82 &2472176476072393907
 AudioSource:
   m_ObjectHideFlags: 0
@@ -124,7 +126,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d994ce93d435c7941b0016c25a2d8c5a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

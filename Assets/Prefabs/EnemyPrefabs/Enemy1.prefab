@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8283364107311967211}
   m_Father: {fileID: 0}
@@ -58,12 +59,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a290fecc9df2e46a5c1a78d4112aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilt: 20
+  destroy: 1
   explosion: {fileID: 3716275016998676317, guid: 6b37cd66c053f5c438d7a6854a9ee401, type: 3}
   bullet: {fileID: 3177500700197465245, guid: ad7b86722acb2044793c5712d1aaf321, type: 3}
   vSpeed: 2
   fireRate: 1
-  hSpeed: -4
-  destroy: 1
+  hSpeed: -5
 --- !u!1001 &2768428919139268799
 PrefabInstance:
   m_ObjectHideFlags: 0

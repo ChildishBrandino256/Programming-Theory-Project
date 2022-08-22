@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4687062618744748632}
   m_Father: {fileID: 0}
@@ -58,11 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71d9a702c8f5204ea788ab9ef653b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilt: 2
+  tilt: 4
   destroy: 1
   explosion: {fileID: 3716275016998676317, guid: 6b37cd66c053f5c438d7a6854a9ee401, type: 3}
   bullet: {fileID: 3177500700197465245, guid: ad7b86722acb2044793c5712d1aaf321, type: 3}
-  vSpeed: 0.1
+  vSpeed: 0.2
   fireRate: 1
   hSpeed: -6
 --- !u!1001 &6683239836282464163

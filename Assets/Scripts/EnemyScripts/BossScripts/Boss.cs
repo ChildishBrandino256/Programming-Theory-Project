@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour, IHasCoolDown
 {
@@ -15,8 +16,8 @@ public class Boss : MonoBehaviour, IHasCoolDown
     private bool dead;
 
     private int attack;
-    private readonly int maxHp = 100;
-    [SerializeField] private int hp;
+    public int maxHp = 150;
+    public int hp;
 
     private Transform weaponParent;
     private Transform laser;
@@ -25,8 +26,10 @@ public class Boss : MonoBehaviour, IHasCoolDown
 
     [SerializeField] private CooldownSystem cooldownSystem;
     private GameObject player;
+    private PlayerController playerscript;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] TextMeshProUGUI congrats;
+    [SerializeField] Image healthBar;
 
     public int Id { get; private set; }
     public float CooldownDuration { get; private set; }
@@ -35,7 +38,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
     // Start is called before the first frame update
     private void Start()
     {
-        startPos = new Vector3(35, 0, 0);
+        startPos = new Vector3(25, 0, 0);
         finalPos = new Vector3(13, 0, 0);
         crashDirection = new Vector3(10, -14, 0);
         transform.position = startPos;
@@ -45,8 +48,10 @@ public class Boss : MonoBehaviour, IHasCoolDown
         ready = false;
         player = GameObject.Find("Player");
         attack = 1;
-        InvokeRepeating("RandomAttack", 6, 2.5f);
+        InvokeRepeating("RandomAttack", 5, 2.2f);
         dead = false;
+        healthBar.gameObject.SetActive(true);
+        playerscript = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -57,7 +62,7 @@ public class Boss : MonoBehaviour, IHasCoolDown
         {
             Movement();
         }
-        if (!player)
+        if (playerscript.m_death)
         {
             CancelInvoke("RandomAttack");
         }
@@ -95,33 +100,41 @@ public class Boss : MonoBehaviour, IHasCoolDown
         }
         else
         {
+            playerscript.score += 90;
             congrats.gameObject.SetActive(true);
+            if (playerscript.score == 200)
+            {
+                congrats.text = "You got the best possible score! Congratulations!";
+            }
+            else
+            {
+                congrats.text = "Final Score: " + playerscript.score;
+            }
+            healthBar.gameObject.SetActive(false);
+            CancelInvoke(nameof(SpawnRandomExplosions));
             gameObject.SetActive(false);
         }
     }
 
     private void SpawnRandomExplosions()
     {
-        Vector3 randomSpawn = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), -1);
+        Vector3 randomSpawn = transform.position + new Vector3(Random.Range(-5f, 0f), Random.Range(-2f, 2f), -1);
         Instantiate(explosion,randomSpawn,explosion.transform.rotation);
     }
 
     public void TakeDamage()
     {
-        if (ready)
+        DamageFlash damageFlash = FindObjectOfType<DamageFlash>();
+        if (hp > 0)
         {
-            DamageFlash damageFlash = FindObjectOfType<DamageFlash>();
-            if (hp > 0)
-            {
-                hp--;
-                damageFlash.StartCoroutine(damageFlash.Flash());
-            }
-            if (hp <= 0 && !dead)
-            {
-                hp = 0;
-                dead = true;
-                InvokeRepeating(nameof(SpawnRandomExplosions), 0, 1);
-            }
+            hp--;
+            damageFlash.StartCoroutine(damageFlash.Flash());
+        }
+        if (hp <= 0 && !dead)
+        {
+            hp = 0;
+            dead = true;
+            InvokeRepeating(nameof(SpawnRandomExplosions), 0, 1);
         }
     }
 

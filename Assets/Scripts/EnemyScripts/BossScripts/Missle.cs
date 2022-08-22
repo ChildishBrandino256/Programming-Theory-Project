@@ -59,6 +59,7 @@ public class Missle : Enemy
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player Projectile"))
         {
             explosion.Play();
+            explosion.GetComponent<AudioSource>().Play();
             dead = true;
             bullet.SetActive(false);
             StartCoroutine(Death());
